@@ -1,11 +1,12 @@
 const knex = require('knex')({
-    client: 'mysql',
+    client: 'mysql2',
+    version:'8.3',
     connection: {
-      host : '127.0.0.1',
+      host : 'localhost',
       port : 3306,
       user : 'root',
-      password : '123456',
-      database : 'thailand-provinces'
+      password : '1234',
+      database : 'test'
     }
   });
 
