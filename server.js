@@ -1,8 +1,23 @@
 const express = require('express')
-const knex = require('./connet.knex')
+const knex = require('./config/connet.knex')
 const { Knex } = require('knex')
+const router = require('./Router')
+
 
 const app = express()
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.raw());
+
+
+app.use('/api',router)
+
+
+
+
+
 
 
 app.get('/thai', async (req, res) => {
@@ -11,24 +26,34 @@ app.get('/thai', async (req, res) => {
     // return res.send('good').status(200)
 })
 // เพิ่ม
-app.post('/thai', async (req, res) => {
-    const { id, name } = req.body
-    const panta = await knex('geographies').insert({
-        id: id,
-        name: name
+// app.post('/thai', async (req, res) => {
+//     const { id, name } = req.body
+//     const panta = await knex('geographies').insert({
+//         id: id,
+//         name: name
+//     })
+//     console.log(panta)
+//     return res.status(200).send('เพิ่ม')
+// })
+// app.post('/thailand', async (req, res) => {
+//     const keesongz = await knex.insert(
+//         [
+//             {id:'6'},
+//             {name:'ภาคตับ'}
+//         ]
+//     ).into('geographies')
+//      console.log(keesongz)
+//     return res.status(200).send('เพิ่ม')
+// })
+
+app.post('/thailand',async (req,res)=>{
+    const {id,name} = req.body
+    const msi = await knex('geographies').insert({
+        id:id,
+        name:name
     })
-    console.log(panta)
-    return res.status(200).send('เพิ่ม')
-})
-app.post('/thailand', async (req, res) => {
-    const keesongz = await knex.insert(
-        [
-            {id:'6'},
-            {name:'ภาคตับ'}
-        ]
-    ).into('geographies')
-     console.log(keesongz)
-    return res.status(200).send('เพิ่ม')
+  console.log(msi)
+  return res.status(200).send('k')
 })
 
 // ค้นหาตามid
