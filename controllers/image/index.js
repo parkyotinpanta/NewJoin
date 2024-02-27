@@ -8,9 +8,9 @@ const read = async (req, res) => {
 // raw 
 const FindProvincesByName = async(req,res)=>{
     const{name_th} = req.body
-    const park = 'yotin'
-    const str = `${park} panta` ``
-    console.log(str);
+    // const park = 'yotin'
+    // const str = `${park} panta` ``
+    // console.log(str);
     
     
     // const find = await knex('provinces').whereLike('name_th',`%${name_th}%`)
